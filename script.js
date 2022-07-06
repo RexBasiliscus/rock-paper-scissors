@@ -1,36 +1,46 @@
 let computerScore = 0;
 let playerScore = 0;
+let round;
+let choices = ["rock", "paper", "scissors"];
 
-function computerPlay () {
-  let choices = ["rock", "paper", "scissors"];
-  return choices[Math.floor(Math.random() * choices.length)]
+
+// Displays a prompt box, where you input your choice
+let playerChoice = prompt('Choose either Rock, Paper, or Scissors');
+let playerSelection = playerChoice.toLowerCase();
+if (choices.includes(playerSelection)) {
+  playRound(playerSelection);
+} else {
+  alert('Please enter one of the options');
 }
 
+      
+    function playRound () {
+      
+      // Outputs a randomized choice for the computer
+      function computerPlay () {
+        return choices[Math.floor(Math.random() * choices.length)]
+      }
+      let computerSelection = computerPlay();
 
-function playRound (playerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  let computerSelection = computerPlay();
-
-  if (playerSelection === computerSelection) {
-    return "It\'s a Tie!";
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") || 
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    playerScore++;
-    return `Congratz! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}!`;
-  } else if (
-    (computerSelection === "rock" && playerSelection === "scissors") ||
-    (computerSelection === "paper" && playerSelection === "rock") || 
-    (computerSelection === "scissors" && playerSelection === "paper")
-  ) {
-    computerScore++;
-    return `You Lose! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}!`;
-  }
-
-}
-
+      // Compares the player vs. computer selections and outputs a specific text and increments score
+      if (playerSelection === computerSelection) {
+        alert("It\'s a Tie!");
+      } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") || 
+        (playerSelection === "scissors" && computerSelection === "paper")
+      ) {
+        playerScore++;
+        alert(`Congratz! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}!`);
+      } else if (
+        (computerSelection === "rock" && playerSelection === "scissors") ||
+        (computerSelection === "paper" && playerSelection === "rock") || 
+        (computerSelection === "scissors" && playerSelection === "paper")
+      ) {
+        computerScore++;
+        alert(`You Lose! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}!`);
+      }
+    }
 
 
 
