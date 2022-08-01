@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(37, 25, 105);
+  color: antiquewhite;
+  font-family: 'Cormorant SC', sans-serif;
+}
+
+header {
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+}
+
+header > h1 {
+  background-color: white;
+  color: black;
+}
+
+.instruction-box {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.instruction-box > p {
+  margin-top: 30px;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.choice {
+  padding: 20px;
+}
+

@@ -50,9 +50,9 @@ function playRound (playerSelection) {
 }
 
 // looping through the game to play 5 rounds
-for (let round = 1; round < 6; round++) {
-  game();
-}
+//for (let round = 1; round < 6; round++) {
+//  game();
+//}
 
 // after 5 rounds, declare a winner
 if (round === 5 && playerScore > computerScore) {
