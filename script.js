@@ -1,21 +1,17 @@
 let computerScore = 0;
 let playerScore = 0;
-let round = 0;
-let choices = ["rock", "paper", "scissors"];
+const choices = ["rock", "paper", "scissors"];
 
+const userScore_span = document.getElementById("user-score");
+const computerScore_span = document.getElementById("computer-score");
+const rock_div = document.getElementById("rock");
+const paper_div = document.getElementById("paper");
+const scissors_div = document.getElementById("scissors");
 
-// Starts the game, then displays a prompt box, where you input your choice; if the choice is not valid, it returns to start
-function game() {
-  let playerChoice = prompt('Choose either Rock, Paper, or Scissors');
-  let playerSelection = playerChoice.toLowerCase();
-  if (choices.includes(playerSelection)) {
-    playRound(playerSelection);
-  } else {
-    alert('Please enter one of the options');
-    game();
-  }
-}
-      
+rock_div.addEventListener('click', () => playRound("rock"));
+paper_div.addEventListener('click', () => playRound("paper"));
+scissors_div.addEventListener('click', () => playRound("scissors"));
+
 function playRound (playerSelection) {
   
   // Outputs a randomized choice for the computer
@@ -42,25 +38,9 @@ function playRound (playerSelection) {
     computerScore++;
     alert(`You Lose! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}!`);
   }
-  round++;
   // outputs the score
   console.log(`Player: ${playerScore}`);
   console.log(`Computer: ${computerScore}`);
-  console.log(`Round #${round}`);
-}
-
-// looping through the game to play 5 rounds
-//for (let round = 1; round < 6; round++) {
-//  game();
-//}
-
-// after 5 rounds, declare a winner
-if (round === 5 && playerScore > computerScore) {
-  alert("You\'re Victorious!");
-} else if (round === 5 && computerScore > playerScore) {
-  alert("Oh no! The computer has won!")
-} else if (round === 5 && computerScore === playerScore) {
-  alert("No one wins, it\'s a Tie!")
 }
 
 
