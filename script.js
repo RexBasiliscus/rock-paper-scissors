@@ -1,47 +1,63 @@
 let computerScore = 0;
 let playerScore = 0;
-const choices = ["rock", "paper", "scissors"];
+let playerSelection = '';
+let computerSelection = '';
 
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
 const scissors_div = document.getElementById("scissors");
+let gameMessage_div = document.getElementById("game-message");
 
-rock_div.addEventListener('click', () => playRound("rock"));
-paper_div.addEventListener('click', () => playRound("paper"));
-scissors_div.addEventListener('click', () => playRound("scissors"));
 
-function playRound (playerSelection) {
-  
-  // Outputs a randomized choice for the computer
-  function computerPlay () {
-    return choices[Math.floor(Math.random() * choices.length)]
-  }
-  let computerSelection = computerPlay();
+rock_div.addEventListener('click', () => userPlay("rock"));
+paper_div.addEventListener('click', () => userPlay("paper"));
+scissors_div.addEventListener('click', () => userPlay("scissors"));
 
-  // Compares the player vs. computer selections and outputs a specific text and increments score
+function userPlay(choice) {
+    playerSelection = choice;
+    playRound(playerSelection);
+}
+
+function computerPlay() {
+  const choices = ["rock", "paper", "scissors"];
+  return choices[Math.floor(Math.random() * choices.length)]
+}
+
+function playRound(playerSelection) {
+
+  computerSelection = computerPlay();
+
   if (playerSelection === computerSelection) {
-    alert("It\'s a Tie!");
+    tie();
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") || 
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    playerScore++;
-    alert(`Congratz! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}!`);
+    win();   
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") || 
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
-    computerScore++;
-    alert(`You Lose! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}!`);
+    lose();
   }
-  // outputs the score
-  console.log(`Player: ${playerScore}`);
-  console.log(`Computer: ${computerScore}`);
 }
 
+function win() {
+  playerScore++;
+  userScore_span.innerText = playerScore;
+  gameMessage_div.innerText = `Congratz! Your ${playerSelection.toUpperCase()} beats Computer's ${computerSelection.toUpperCase()}!`;
+}
 
+function lose() {
+  computerScore++;
+  computerScore_span.innerText = computerScore;
+  gameMessage_div.innerText = `You Lose! Computer's ${computerSelection.toUpperCase()} beats Your ${playerSelection.toUpperCase()}!`
+}
 
+function tie() {
+  gameMessage_div.innerText = "It\'s a Tie!"
+}
