@@ -1,7 +1,7 @@
 let computerScore = 0;
 let playerScore = 0;
-let playerSelection = '';
-let computerSelection = '';
+let playerSelection;
+let computerSelection;
 
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
@@ -17,7 +17,7 @@ scissors_div.addEventListener('click', () => userPlay("scissors"));
 
 function userPlay(choice) {
     playerSelection = choice;
-    playRound(playerSelection);
+    game();
 }
 
 function computerPlay() {
@@ -48,16 +48,31 @@ function playRound(playerSelection) {
 
 function win() {
   playerScore++;
-  userScore_span.innerText = playerScore;
-  gameMessage_div.innerText = `Congratz! Your ${playerSelection.toUpperCase()} beats Computer's ${computerSelection.toUpperCase()}!`;
+  userScore_span.textContent = playerScore;
+  gameMessage_div.textContent = `Congratz! Your ${playerSelection.toUpperCase()} beats Computer's ${computerSelection.toUpperCase()}!`;
+  document.getElementById(playerSelection).classList.add('green-bckgr');
+  setTimeout(() => document.getElementById(playerSelection).classList.remove('green-bckgr'), 300);
 }
 
 function lose() {
   computerScore++;
-  computerScore_span.innerText = computerScore;
-  gameMessage_div.innerText = `You Lose! Computer's ${computerSelection.toUpperCase()} beats Your ${playerSelection.toUpperCase()}!`
+  computerScore_span.textContent = computerScore;
+  gameMessage_div.textContent = `You Lose! Computer's ${computerSelection.toUpperCase()} beats Your ${playerSelection.toUpperCase()}!`
+  document.getElementById(playerSelection).classList.add('red-bckgr');
+  setTimeout(() => document.getElementById(playerSelection).classList.remove('red-bckgr'), 300);
 }
 
 function tie() {
-  gameMessage_div.innerText = "It\'s a Tie!"
+  gameMessage_div.textContent = "It\'s a Tie!"
+  document.getElementById(playerSelection).classList.add('gray-bckgr');
+  setTimeout(() => document.getElementById(playerSelection).classList.remove('gray-bckgr'), 300);
 }
+
+function game() {
+  if (!(playerScore > 4 && computerScore > 4)) {
+    playRound(playerSelection);
+  } else {
+    alert("Game Over!");
+  }
+};
+
