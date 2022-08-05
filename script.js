@@ -9,7 +9,10 @@ const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
 const scissors_div = document.getElementById("scissors");
 let gameMessage_div = document.getElementById("game-message");
-
+const wrapper_div = document.querySelector("wrapper");
+const choices_div = document.querySelector("choices");
+const instructionBox_div = document.querySelector("instruction-box");
+const startButton_div = document.getElementById("start");
 
 rock_div.addEventListener('click', () => userPlay("rock"));
 paper_div.addEventListener('click', () => userPlay("paper"));
@@ -69,10 +72,23 @@ function tie() {
 }
 
 function game() {
-  if (!(playerScore > 4 && computerScore > 4)) {
+  if (!(playerScore > 4 || computerScore > 4)) {
     playRound(playerSelection);
   } else {
-    alert("Game Over!");
+    endGame();
   }
 };
+
+// function to end the game, declare winner, append the restart btn
+function endGame() {
+  if (playerScore > 4) {
+    gameMessage_div.textContent = `Congratz! You have Won the game!`;
+  } else if (computerScore > 4) {
+    gameMessage_div.textContent = `You have lost the game :(`
+  }
+  const restartMsg = document.createElement("p");
+  restartMsg.textContent = "Do you want to restart?"
+  gameMessage_div.appendChild(restartMsg);
+}
+
 
