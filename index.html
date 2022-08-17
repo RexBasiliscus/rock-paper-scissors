@@ -18,25 +18,27 @@
       <button id="start">Start the Game!</button>
     </div>
 
-    <div class="choices">
-      <div class="choice" id="rock">
-        <img src="images/rock.png" alt="rock icon">
+    <div id="game-box">
+      <div class="choices" id="choices">
+        <div class="choice" id="rock">
+          <img src="images/rock.png" alt="rock icon">
+        </div>
+        <div class="choice" id="paper">
+          <img src="images/paper.png" alt="paper icon">
+        </div>
+        <div class="choice" id="scissors">
+          <img src="images/scissors.png" alt="scissors icon">
+        </div>
       </div>
-      <div class="choice" id="paper">
-        <img src="images/paper.png" alt="paper icon">
-      </div>
-      <div class="choice" id="scissors">
-        <img src="images/scissors.png" alt="scissors icon">
+    
+      <div class="scoreboard">
+        <h3>PLAYER vs COMPUTER</h3>
+        <span id="user-score">0</span><span>:</span><span id="computer-score">0</span>
       </div>
     </div>
-  </div>
 
-  <div class="scoreboard">
-    <h3>PLAYER vs COMPUTER</h3>
-    <span id="user-score">0</span><span>:</span><span id="computer-score">0</span>
+    <div id="game-message"></div>
   </div>
-
-  <div id="game-message"></div>
 
   <script src="script.js"></script>
 </body>
