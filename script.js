@@ -40,7 +40,7 @@ scissors_div.addEventListener('click', () => userPlay("scissors"));
 
 function userPlay(choice) {
     playerSelection = choice;
-    game();
+    playRound(playerSelection);
 }
 
 //================== COMPUTER CHOICE =====================//
@@ -71,7 +71,13 @@ function playRound(playerSelection) {
   ) {
     lose();
   }
-}
+
+//========= SCORE THRESHOLD FOR WIN DECLARATION =======//
+  if (playerScore === 5 || computerScore === 5) {
+    choices_div.style.display = 'none';
+    endGame();
+  }
+};
 
 function win() {
   playerScore++;
@@ -95,16 +101,7 @@ function tie() {
   setTimeout(() => document.getElementById(playerSelection).classList.remove('gray-bckgr'), 300);
 }
 
-//================== GAME FUNCTIONALITY =====================//
-
-function game() {
-  if (!(playerScore > 4 || computerScore > 4)) {
-    playRound(playerSelection);
-  } else {
-    choices_div.style.display = 'none';
-    endGame();
-  }
-};
+//================== END GAME =====================//
 
 function endGame() {
   if (playerScore > 4) {
