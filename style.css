@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 body {
@@ -19,6 +19,8 @@ body {
   margin: auto;
 }
 
+/**************** Header ********************/
+
 header {
   padding: 20px;
   background-color: white;
@@ -30,29 +32,35 @@ header > h1 {
   color: black;
 }
 
+/*********** Instruction Box + Start Button ************/
+
 .instruction-box {
   text-align: center;
-  margin: 20px auto;
+  margin: auto;
+  padding: 10px 0;
   max-width: 75%;
 }
 
-#start {
+button {
   margin-top: 20px;
   padding: 4px;
   border-radius: 5px;
   font-weight: 700;
   max-width: 35%;
-  
+  opacity: 0.9;
 }
 
-#start:hover {
+button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .instruction-box > p {
   margin-top: 30px;
   font-weight: 600;
 }
+
+/********** Game Buttons + Scoreboard ***********/
 
 #game-box {
   visibility: hidden;
@@ -62,13 +70,15 @@ header > h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .choice {
-  margin: 20px;
+  margin: auto 20px;
   border: 4px solid antiquewhite;
   border-radius: 50%;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 img {
@@ -95,6 +105,8 @@ img {
   font-size: 100px;
 }
 
+/************* Game Message *************/
+
 #game-message {
   margin: 20px auto;
   text-align: center;
@@ -114,8 +126,43 @@ img {
   border: 3px solid rgb(95, 90, 90);
 }
 
+/******************* Media queries ***********************/
+
 @media(max-width: 700px) {
+ 
+  h2, h3 {
+    font-size: medium;
+  }
+
+  .scoreboard > span {
+    font-size: 60px;
+  }
+
+  #game-message {
+    font-size: 12px;
+  }
+}
+
+@media(orientation: landscape) {
+  
   body {
-    background-color: blue;
+    max-height: 100vh;
+  }
+  
+  .choices {
+    max-width: 100vh;
+  }
+
+  .scoreboard {
+    padding: 0;
+    margin: auto;
+  }
+
+  .scoreboard > span {
+    font-size: 40px;
+  }
+
+  #game-message {
+    margin: auto;
   }
 }
